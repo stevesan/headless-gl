@@ -852,9 +852,6 @@ GL_METHOD(TexImage2D) {
         , *pixels);
     }
   } else {
-    size_t length = width * height * 4;
-    char* data = new char[length];
-    memset(data, 0, length);
     (inst->glTexImage2D)(
         target
       , level
@@ -864,8 +861,7 @@ GL_METHOD(TexImage2D) {
       , border
       , format
       , type
-      , data);
-    delete[] data;
+      , nullptr);
   }
 }
 
